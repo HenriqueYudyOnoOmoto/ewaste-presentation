@@ -1,0 +1,1239 @@
+/* ==========================================================================
+   MINERAÇÃO URBANA E O LIXO ELETRÔNICO
+   Design System: Minimalist & Clean Editorial (Apresentação Moderna)
+   ========================================================================== */
+
+:root {
+  /* Paleta Base Limpa */
+  --bg-main: #0a0e17;
+  --bg-card: #121824;
+  --bg-subtle: rgba(255, 255, 255, 0.03);
+
+  --border-light: rgba(255, 255, 255, 0.08);
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  /* Cores de Destaque Discretas */
+  --emerald: #10b981;
+  --emerald-light: #34d399;
+  --amber: #f59e0b;
+  --cyan: #38bdf8;
+  --red: #f87171;
+
+  /* Tipografia Moderna e Simples */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Escala de Tipografia Padronizada */
+  --fs-hero: 2.5rem;
+  --fs-h2: 1.85rem;
+  --fs-stat-lg: 2.2rem;
+  --fs-stat-md: 1.5rem;
+  --fs-title: 1.1rem;
+  --fs-sub: 0.95rem;
+  --fs-body: 0.88rem;
+  --fs-body-sm: 0.82rem;
+  --fs-badge: 0.72rem;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+}
+
+/* Reset Global */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   SCROLL-SNAP SLIDES CONTAINER (VERTICAL, SEM HORIZONTAL)
+   ========================================================================== */
+.slides-container {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.slides-container::-webkit-scrollbar {
+  width: 5px;
+}
+.slides-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slides-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+}
+
+/* Slide Section */
+.slide-section {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.slide-wrapper {
+  width: var(--base-w, 1200px);
+  min-height: var(--base-h, 675px);
+  max-width: var(--base-w, 1200px);
+  transform: scale(var(--scale, 1));
+  transform-origin: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  padding: 1.5rem 2rem;
+}
+
+/* ==========================================================================
+   TIPOGRAFIA E CABEÇALHOS
+   ========================================================================== */
+.section-title-group {
+  margin-bottom: 1.75rem;
+  text-align: left;
+  width: 100%;
+}
+.section-title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 0.4rem;
+  text-align: left;
+}
+.section-subtitle {
+  font-size: var(--fs-sub);
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 760px;
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.highlight-emerald { color: var(--emerald-light); font-weight: 700; }
+.highlight-amber { color: var(--amber); font-weight: 700; }
+.highlight-cyan { color: var(--cyan); font-weight: 700; }
+.highlight-red { color: var(--red); font-weight: 700; }
+
+/* ==========================================================================
+   PADRONIZAÇÃO TIPOGRÁFICA GLOBAL (DRY & DESIGN SYSTEM)
+   ========================================================================== */
+
+/* 1. Badges, Tags, Overlines e Marcadores Superiores (Mono Uppercase) */
+.cm-label,
+.concept-tag,
+.card-tag-label,
+.term-scope,
+.classification-title,
+.metric-category,
+.cause-tag-badge,
+.step-num,
+.panel-header-badge,
+.side-tag,
+.multiplier-tag,
+.benefit-badge,
+.pillar-step-num,
+.pillar-tag,
+.c-badge,
+.action-step-badge,
+.takeaway-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-badge);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  margin-bottom: 0.35rem;
+  display: inline-block;
+}
+
+/* 2. Títulos Principais dos Cards */
+.concept-title,
+.metric-heading,
+.cause-card-title,
+.panel-heading,
+.concentration-label,
+.tokyo-title,
+.el-name,
+.benefit-heading,
+.pillar-heading,
+.c-heading,
+.action-step-title,
+.takeaway-title {
+  font-size: var(--fs-title);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+/* 3. Textos de Corpo e Descrições de Cards */
+.concept-desc,
+.definition-main-text,
+.line-desc,
+.metric-detail,
+.cause-card-text,
+.toxic-list,
+.panel-text,
+.concentration-desc,
+.tokyo-desc,
+.el-dest,
+.benefit-text,
+.pillar-body,
+.c-text,
+.action-step-text,
+.takeaway-desc {
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* 4. Grandes Métricas e Estatísticas */
+.metric-figure,
+.concentration-value,
+.benefit-stat {
+  font-size: var(--fs-stat-lg);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+/* 5. Métricas Médias e Símbolos */
+.cm-val,
+.el-symbol,
+.cause-index,
+.term-acronym {
+  font-size: var(--fs-stat-md);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* 6. Textos Secundários / Apoio */
+.warning-callout,
+.ratio-legend,
+.step-desc,
+.term-fullname {
+  font-size: var(--fs-body-sm);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   PADRONIZAÇÃO ESTRUTURAL DE CONTÊINERES (BASE CARDS)
+   Todos os cards compartilham o mesmo fundo, borda neutra e geometria base.
+   ========================================================================== */
+.card-base,
+.concept-intro-card,
+.definition-card,
+.line-box,
+.metric-panel,
+.cause-card,
+.danger-panel,
+.showdown-card,
+.element-card,
+.eco-benefit-box,
+.pillar-card,
+.conclusion-box,
+.action-steps-banner,
+.action-card,
+.info-card,
+.fase-column,
+.takeaway-box,
+.cover-metric-chip,
+.tokyo-olympics-card,
+.ratio-bar-box,
+.linear-banner,
+.outro-quote-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem;
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modificador Compacto para Itens em Grid Denso / Banners */
+.line-box,
+.element-card,
+.takeaway-box,
+.action-card,
+.cover-metric-chip,
+.tokyo-olympics-card,
+.ratio-bar-box,
+.linear-banner {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+}
+
+/* ==========================================================================
+   SLIDE 0: CAPA DA APRESENTAÇÃO (MINIMALISTA)
+   ========================================================================== */
+.cover-slide {
+  text-align: center;
+}
+.cover-wrapper {
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.cover-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+.cover-highlight {
+  color: var(--emerald-light);
+}
+.cover-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 740px;
+  margin: 0 auto 2rem;
+}
+.cover-metrics-preview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+  justify-content: center;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 780px;
+}
+.cover-metric-chip {
+  align-items: center;
+  text-align: center;
+}
+.cm-val {
+  font-size: var(--fs-stat-md);
+  font-weight: 800;
+  line-height: 1.1;
+}
+.cm-label {
+  color: var(--text-dim);
+  margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+   SLIDE 1: O CONCEITO DE REEE / WEEE
+   ========================================================================== */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  margin-bottom: 1.25rem;
+}
+.concept-tag, .card-tag-label {
+  color: var(--emerald-light);
+  margin-bottom: 0.5rem;
+}
+.concept-title {
+  margin-bottom: 0.5rem;
+}
+.concept-desc, .definition-main-text {
+  margin-bottom: 0.75rem;
+}
+.concept-desc:last-child {
+  margin-bottom: 0;
+}
+.definition-main-text {
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.terms-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+.term-item {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+.term-acronym {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--emerald-light);
+}
+.term-fullname {
+  font-size: 0.78rem;
+  color: #fff;
+  font-weight: 600;
+  margin: 0.2rem 0;
+}
+.term-scope {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.lines-classification {
+  margin-top: 0;
+  width: 100%;
+}
+.classification-header {
+  margin-bottom: 0.5rem;
+}
+.classification-title {
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+.lines-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+.line-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+.line-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.line-indicator.green { background: #10b981; }
+.line-indicator.brown { background: #b45309; }
+.line-indicator.white { background: #e2e8f0; }
+.line-indicator.blue { background: #38bdf8; }
+.line-name {
+  color: #fff;
+}
+.line-desc {
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   SLIDE 2: DIAGNÓSTICO GLOBAL E BRASIL
+   ========================================================================== */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.metric-category {
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+.metric-figure {
+  margin-bottom: 0.5rem;
+}
+.metric-heading {
+  margin-bottom: 0.4rem;
+}
+
+.ratio-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-muted);
+}
+.ratio-title { font-weight: 600; color: #fff; }
+.ratio-bar-track {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+}
+.ratio-segment.green-seg { background: var(--emerald); }
+.ratio-segment.red-seg { background: var(--red); }
+.ratio-legend {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.legend-item { display: flex; align-items: center; gap: 0.4rem; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.legend-dot.green-dot { background: var(--emerald); }
+.legend-dot.red-dot { background: var(--red); }
+
+/* ==========================================================================
+   SLIDE 3: CAUSAS DO CRESCIMENTO
+   ========================================================================== */
+.causes-triptych {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.cause-index {
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+.cause-tag-badge {
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+.cause-card-title {
+  margin-bottom: 0.5rem;
+}
+.cause-card-text {
+  margin-bottom: 0;
+}
+
+.linear-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.linear-step {
+  display: flex;
+  flex-direction: column;
+}
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.step-desc {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+}
+.linear-step.alert-step .step-num, .linear-step.alert-step .step-desc {
+  color: var(--red);
+}
+.step-separator {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   SLIDE 4: PERIGOS OCULTOS (SAÚDE E MEIO AMBIENTE)
+   ========================================================================== */
+.danger-panels-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.panel-header-badge {
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+}
+.panel-heading {
+  margin-bottom: 0.6rem;
+}
+.toxic-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.toxic-list strong { color: #fff; }
+.panel-text {
+  margin-bottom: 0.75rem;
+}
+.warning-callout {
+  background: var(--bg-subtle);
+  border-left: 3px solid var(--amber);
+  padding: 0.6rem 0.85rem;
+  margin-top: auto;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.warning-callout.red {
+  border-left-color: var(--red);
+}
+
+/* ==========================================================================
+   SLIDE 5: MINERAÇÃO URBANA (PLOT TWIST)
+   ========================================================================== */
+.comparison-showdown {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  margin-bottom: 1.5rem;
+}
+.side-tag {
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+.side-tag.emerald { color: var(--emerald-light); }
+.concentration-value {
+  margin-bottom: 0.35rem;
+}
+.concentration-value.red { color: var(--red); }
+.concentration-value.emerald { color: var(--emerald-light); }
+.concentration-label {
+  margin-bottom: 0.5rem;
+}
+.concentration-desc {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.showdown-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  gap: 0.35rem;
+}
+.vs-badge {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-dim);
+  background: var(--bg-card);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+}
+.multiplier-tag {
+  font-size: 0.72rem;
+  color: var(--emerald-light);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tokyo-olympics-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+.tokyo-medal-icon { font-size: 1.8rem; }
+.tokyo-title {
+  margin-bottom: 0.2rem;
+}
+
+/* ==========================================================================
+   SLIDE 6: VALOR ECONÔMICO E GAVETAS
+   ========================================================================== */
+.metals-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+  margin-bottom: 1.25rem;
+}
+.el-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+.el-atomic {
+  font-family: var(--font-mono);
+  font-size: var(--fs-badge);
+  color: var(--text-dim);
+}
+.el-symbol {
+  color: #fff;
+}
+.element-card.au .el-symbol { color: var(--amber); }
+.element-card.ag .el-symbol { color: #e2e8f0; }
+.element-card.cu .el-symbol { color: #f97316; }
+.element-card.co .el-symbol { color: var(--cyan); }
+.el-name {
+  margin-bottom: 0.25rem;
+}
+
+.economic-split-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.eco-benefit-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+.benefit-badge {
+  margin-bottom: 0.4rem;
+  display: inline-block;
+}
+.benefit-badge.green { color: var(--emerald-light); }
+.benefit-badge.amber { color: var(--amber); }
+.benefit-heading {
+  margin-bottom: 0.4rem;
+}
+.benefit-text {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   SLIDE 7: LOGÍSTICA REVERSA
+   ========================================================================== */
+.pillars-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.pillar-step-num {
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+.pillar-icon-box { font-size: 1.6rem; margin-bottom: 0.5rem; }
+.pillar-heading {
+  margin-bottom: 0.5rem;
+}
+.pillar-body {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+.pillar-tag {
+  color: var(--emerald-light);
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  align-self: flex-start;
+}
+.pillar-tag.texto-azul {
+  color: var(--cyan) !important;
+  background: rgba(6, 182, 212, 0.12);
+}
+.pillar-tag.texto-amarelo {
+  color: var(--amber) !important;
+  background: rgba(245, 158, 11, 0.12);
+}
+.pillar-tag.texto-verde {
+  color: var(--emerald-light) !important;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+/* ==========================================================================
+   SLIDE 8: REFINO SEGURO E CHAMADO À AÇÃO
+   ========================================================================== */
+.conclusion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+.c-badge {
+  color: var(--cyan);
+  margin-bottom: 0.4rem;
+}
+.c-heading {
+  margin-bottom: 0.4rem;
+}
+
+.action-steps-banner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  text-align: center;
+}
+.action-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.action-step-badge {
+  color: var(--emerald-light);
+  margin-bottom: 0.25rem;
+}
+.action-step-title {
+  margin-bottom: 0.25rem;
+}
+
+/* ==========================================================================
+   SLIDE FINAL: ENCERRAMENTO E MANIFESTO
+   ========================================================================== */
+.outro-slide {
+  text-align: left;
+}
+.outro-wrapper {
+  max-width: 950px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  text-align: left;
+}
+.outro-wrapper .section-title-group {
+  margin-bottom: 1.25rem;
+  text-align: left;
+  width: 100%;
+}
+.outro-quote-card {
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+.outro-quote-text {
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+.outro-highlight {
+  color: var(--emerald-light);
+}
+.outro-quote-sub {
+  font-size: var(--fs-sub);
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.outro-takeaways-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+  margin-bottom: 0;
+  width: 100%;
+  text-align: left;
+}
+
+/* Grids Modulares Universais (Gaps Padronizados 1.25rem) */
+.grid-4-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+.grid-3-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+.grid-2-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+.grid-6-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+  margin-bottom: 1.25rem;
+}
+
+/* --- Sub-containers e Estruturas Compostas --- */
+.layer-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+}
+.layer-item {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+}
+.layer-item-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.15rem;
+}
+.layer-item-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.mini-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+.mini-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.matrix-split-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+.matrix-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+}
+.matrix-group .cause-card {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  align-items: stretch;
+}
+.fase-column {
+  gap: 0.75rem;
+}
+.fase-header {
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.fase-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0.2rem;
+}
+.fase-item {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+.fase-item-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+.fase-item-desc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+.takeaway-num {
+  color: var(--emerald-light);
+  margin-bottom: 0.3rem;
+}
+.takeaway-title {
+  margin-bottom: 0.3rem;
+}
+
+/* ==========================================================================
+   CAMADA DE CORES & MODIFICADORES (COLOR LAYER / "PINTAR EM CIMA")
+   A estrutura base é 100% padronizada e neutra; a cor é aplicada sobre o elemento.
+   ========================================================================== */
+
+/* --- 1. BORDAS COLORIDAS (BORDER MODIFIERS / FACIL DE USAR) --- */
+.border-emerald,
+.borda-verde,
+.cover-metric-chip.chip-emerald,
+.line-box.green-border,
+.showdown-card.urban-side,
+.eco-benefit-box.green-benefit,
+.action-steps-banner,
+.outro-quote-card {
+  border-color: var(--emerald) !important;
+}
+
+.border-amber,
+.borda-amarela,
+.borda-dourada,
+.cover-metric-chip.chip-amber,
+.line-box.brown-border,
+.metric-panel.featured-amber,
+.tokyo-olympics-card,
+.element-card.au,
+.eco-benefit-box.amber-benefit {
+  border-color: var(--amber) !important;
+}
+
+.border-cyan,
+.borda-azul,
+.borda-ciano,
+.cover-metric-chip.chip-cyan,
+.line-box.blue-border,
+.metric-panel.featured-cyan,
+.element-card.co {
+  border-color: var(--cyan) !important;
+}
+
+.border-red,
+.borda-vermelha,
+.metric-panel.featured-red,
+.linear-banner,
+.showdown-card.traditional-side {
+  border-color: var(--red) !important;
+}
+
+.border-orange,
+.borda-laranja,
+.element-card.cu {
+  border-color: #f97316 !important;
+}
+
+.border-white,
+.borda-branca,
+.line-box.white-border,
+.element-card.ag {
+  border-color: rgba(226, 232, 240, 0.7) !important;
+}
+
+/* --- 2. DESTAQUES DE TEXTO & BADGES (TEXT & ACCENT MODIFIERS / FACIL DE USAR) --- */
+.color-emerald,
+.texto-verde,
+.highlight-emerald,
+.cover-highlight,
+.outro-highlight,
+.multiplier-tag,
+.side-tag.emerald,
+.concentration-value.emerald,
+.benefit-badge.green,
+.action-step-badge,
+.takeaway-num,
+.term-acronym,
+.concept-tag,
+.card-tag-label {
+  color: var(--emerald-light) !important;
+}
+
+.color-amber,
+.texto-amarelo,
+.texto-dourado,
+.highlight-amber,
+.element-card.au .el-symbol,
+.benefit-badge.amber {
+  color: var(--amber) !important;
+}
+
+.color-cyan,
+.texto-azul,
+.texto-ciano,
+.highlight-cyan,
+.c-badge,
+.element-card.co .el-symbol {
+  color: var(--cyan) !important;
+}
+
+.color-red,
+.texto-vermelho,
+.highlight-red,
+.linear-step.alert-step .step-num,
+.linear-step.alert-step .step-desc,
+.concentration-value.red {
+  color: var(--red) !important;
+}
+
+.color-orange,
+.texto-laranja,
+.element-card.cu .el-symbol {
+  color: #f97316 !important;
+}
+
+.color-white,
+.texto-branco {
+  color: #ffffff !important;
+}
+
+/* --- 3. CALLOUTS LATERAIS (CALLOUT ACCENT MODIFIERS) --- */
+.warning-callout,
+.callout-amber,
+.callout-amarelo {
+  border-left-color: var(--amber) !important;
+}
+.warning-callout.red,
+.callout-red,
+.callout-vermelho {
+  border-left-color: var(--red) !important;
+}
+.callout-emerald,
+.callout-verde {
+  border-left-color: var(--emerald) !important;
+}
+.callout-cyan,
+.callout-azul {
+  border-left-color: var(--cyan) !important;
+}
+.callout-orange,
+.callout-laranja {
+  border-left-color: #f97316 !important;
+}
+
+/* Garantir que colunas de grid possam encolher proporcionalmente */
+.concept-intro-card, .definition-card, .term-item, .line-box,
+.metric-panel, .cause-card, .danger-panel, .showdown-card,
+.element-card, .eco-benefit-box, .pillar-card, .conclusion-box,
+.action-step-item, .takeaway-box, .cover-metric-chip {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   ADAPTAÇÃO BASEADA EXCLUSIVAMENTE NA PROPORÇÃO DE TELA (NÃO NA RESOLUÇÃO)
+   FHD, QHD, 4K, 720p possuem exatamente a mesma aparência em 16:9
+   ========================================================================== */
+
+/* Proporção 4:3 (Telas clássicas / Tablets) */
+body[data-aspect="4-3"] .slide-wrapper {
+  padding: 1.25rem 1.5rem;
+}
+
+/* Proporção Retrato (Celular em pé: 9:16, 9:19.5...) */
+body[data-aspect="portrait"] .slide-wrapper {
+  padding: 1.25rem 1rem;
+  justify-content: flex-start;
+  padding-top: 1.75rem;
+}
+body[data-aspect="portrait"] .hero-split {
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+body[data-aspect="portrait"] .lines-row {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+body[data-aspect="portrait"] .metals-row {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+body[data-aspect="portrait"] .economic-split-cards {
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+body[data-aspect="portrait"] .comparison-showdown {
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+body[data-aspect="portrait"] .showdown-divider {
+  flex-direction: row;
+  justify-content: center;
+}
+body[data-aspect="portrait"] .cover-metrics-preview {
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+body[data-aspect="portrait"] .linear-banner {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+body[data-aspect="portrait"] .grid-4-cols {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+body[data-aspect="portrait"] .grid-6-actions {
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+body[data-aspect="portrait"] .grid-3-cols {
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+body[data-aspect="portrait"] .grid-2-cols {
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+body[data-aspect="portrait"] .matrix-split-2x2 {
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+body[data-aspect="portrait"] .fases-grid {
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+body[data-aspect="portrait"] .step-separator {
+  transform: rotate(90deg);
+  margin-left: 0.5rem;
+}
+
+/* ==========================================================================
+   PRINT / PDF
+   ========================================================================== */
+@media print {
+  body { background: #fff !important; color: #000 !important; overflow: visible !important; }
+  .slides-container { height: auto !important; overflow: visible !important; scroll-snap-type: none !important; }
+  .slide-section {
+    position: relative !important;
+    display: block !important;
+    height: auto !important;
+    min-height: auto !important;
+    page-break-after: always;
+    padding: 2rem 0 !important;
+  }
+  .section-title, .hero-heading, h1, h2, h3, h4 { color: #000 !important; }
+  .highlight-emerald, .highlight-amber, .highlight-cyan, .highlight-red { color: #000 !important; }
+  .definition-card, .metric-panel, .cause-card, .danger-panel, .showdown-card, .element-card, .pillar-card, .conclusion-box, .takeaway-box {
+    border: 1px solid #ccc !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
